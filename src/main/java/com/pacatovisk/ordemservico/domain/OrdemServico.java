@@ -1,19 +1,34 @@
 package com.pacatovisk.ordemservico.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pacatovisk.ordemservico.domain.enums.Prioridade;
 import com.pacatovisk.ordemservico.domain.enums.Status;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class OrdemServico {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime  dataAbertura;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataFechamento;
     private Integer prioridade;
     private String observacoes;
     private Integer status;
+
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public OrdemServico(){
