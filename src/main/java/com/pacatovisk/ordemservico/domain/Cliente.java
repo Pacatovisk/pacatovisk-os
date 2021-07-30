@@ -1,6 +1,10 @@
 package com.pacatovisk.ordemservico.domain;
 
-public class Cliente extends Pessoa{
+import java.io.Serializable;
+
+public class Cliente extends Pessoa implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public Cliente() {
     }
@@ -8,4 +12,5 @@ public class Cliente extends Pessoa{
     public Cliente(Integer id, String nome, String cpf, String telefone) {
         super(id, nome, cpf, telefone);
     }
+
 }

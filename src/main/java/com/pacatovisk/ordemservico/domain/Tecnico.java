@@ -1,6 +1,10 @@
 package com.pacatovisk.ordemservico.domain;
 
-public class Tecnico extends Pessoa {
+import java.io.Serializable;
+
+public class Tecnico extends Pessoa implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public Tecnico() {
     }
