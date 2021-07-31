@@ -10,15 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public abstract class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static final long serialVersionUID = 1L;
     private Integer id;
     private String nome;
 
