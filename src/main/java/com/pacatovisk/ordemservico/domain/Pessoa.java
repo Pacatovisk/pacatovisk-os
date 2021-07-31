@@ -22,7 +22,6 @@ public abstract class Pessoa {
     private Integer id;
     private String nome;
 
-    @CPF
     private String cpf;
     private String telefone;
 }
