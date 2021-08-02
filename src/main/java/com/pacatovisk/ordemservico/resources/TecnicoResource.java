@@ -1,6 +1,6 @@
 package com.pacatovisk.ordemservico.resources;
 
-import com.pacatovisk.ordemservico.domain.Tecnico;
+import com.pacatovisk.ordemservico.dtos.TecnicoDto;
 import com.pacatovisk.ordemservico.services.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,8 @@ public class TecnicoResource {
 
     //localhost:8080/tecnicos/1
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Tecnico> findById(@PathVariable Integer id) {
-      Tecnico obj = tecnicoService.findById(id);
-      return ResponseEntity.ok().body(obj);
+    public ResponseEntity<TecnicoDto> findById(@PathVariable Integer id) {
+        TecnicoDto objDto = new TecnicoDto(tecnicoService.findById(id));
+      return ResponseEntity.ok().body(objDto);
     }
 }

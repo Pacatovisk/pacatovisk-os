@@ -3,6 +3,7 @@ package com.pacatovisk.ordemservico.resources;
 import com.pacatovisk.ordemservico.domain.OrdemServico;
 import com.pacatovisk.ordemservico.services.OSservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,4 +30,5 @@ public class OrdemServicoResource {
        OrdemServico obj = oSservice.findById(id);
        return ResponseEntity.ok().body(obj);
     }
+
 }
