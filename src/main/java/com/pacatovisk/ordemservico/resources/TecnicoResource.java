@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
 @RestController
 @RequestMapping(value = "/tecnicos")
 public class TecnicoResource {
@@ -23,4 +24,5 @@ public class TecnicoResource {
         TecnicoDto objDto = new TecnicoDto(tecnicoService.findById(id));
       return ResponseEntity.ok().body(objDto);
     }
+
 }
