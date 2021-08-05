@@ -1,7 +1,6 @@
 package com.pacatovisk.ordemservico.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
 public class Cliente extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -26,4 +24,11 @@ public class Cliente extends Pessoa implements Serializable {
         super(id, nome, cpf, telefone);
     }
 
+    public List<OrdemServico> getList() {
+        return list;
+    }
+
+    public void setList(List<OrdemServico> list) {
+        this.list = list;
+    }
 }

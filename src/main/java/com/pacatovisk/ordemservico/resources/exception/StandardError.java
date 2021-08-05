@@ -1,4 +1,4 @@
-package com.pacatovisk.ordemservico.resources;
+package com.pacatovisk.ordemservico.resources.exception;
 
 import java.io.Serializable;
 

@@ -1,7 +1,9 @@
 package com.pacatovisk.ordemservico.services;
 
 import com.pacatovisk.ordemservico.domain.Tecnico;
+import com.pacatovisk.ordemservico.dtos.TecnicoDto;
 import com.pacatovisk.ordemservico.repositories.TecnicoRepository;
+import com.pacatovisk.ordemservico.services.exceptions.DataIntegrityViolationException;
 import com.pacatovisk.ordemservico.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +25,20 @@ public class TecnicoService {
 
     public List<Tecnico> findAll() {
        return tecnicoRepository.findAll();
+    }
+
+    public Tecnico create(TecnicoDto objDto){
+        if(findByCPF(objDto) != null) {
+            throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
+        }
+        return tecnicoRepository.save(new Tecnico(null, objDto.getNome(), objDto.getCpf(), objDto.getTelefone()));
+    }
+
+    public Tecnico findByCPF(TecnicoDto objDto) {
+        Tecnico obj = tecnicoRepository.findByCPF(objDto.getCpf());
+        if(obj != null) {
+            return obj;
+        }
+        return null;
     }
 }

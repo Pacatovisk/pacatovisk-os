@@ -27,17 +27,17 @@ public class DBService {
 
     public void IntanciaBaseDeDados() {
 
-        Tecnico t1 = new Tecnico(null, "Leandro Dias","641.000.040-88", "(11)94000-0005");
-        Tecnico t2 = new Tecnico(null, "Linus Torvalds", "641.760.040-88", "(88) 94545-4545");
-        Tecnico t3 = new Tecnico(null, "Alan Turing", "332.040.820-83", "(88) 96345-9874");
-        Tecnico t4 = new Tecnico(null, "Richard Stallman", "756.192.280-96", "(88) 98745-8542");
-        Tecnico t5 = new Tecnico(null, "Tim Berners-Lee", "926.076.200-66", "(88) 98545-3685");
+        Tecnico t1 = new Tecnico(null, "Leandro Dias","858.209.830-84", "(11)94000-0005");
+        Tecnico t2 = new Tecnico(null, "Linus Torvalds", "286.005.900-86", "(88) 94545-4545");
+        Tecnico t3 = new Tecnico(null, "Alan Turing", "936.369.020-24", "(88) 96345-9874");
+        Tecnico t4 = new Tecnico(null, "Richard Stallman", "838.404.280-25", "(88) 98745-8542");
+        Tecnico t5 = new Tecnico(null, "Tim Berners-Lee", "128.363.740-55", "(88) 98545-3685");
 
-        Cliente c1 = new Cliente(null, "Betina Campos", "598.508.200-80", "(88) 98888-7777");
-        Cliente c2 = new Cliente(null, "Galileu Galilei", "089.637.320-70", "(88) 97854-6985");
-        Cliente c3 = new Cliente(null, "Isaac Newton", "422.876.280-88", "(88) 95555-6541");
-        Cliente c4 = new Cliente(null, "Marie Curie", "420.724.490-57", "(88) 96666-8523");
-        Cliente c5 = new Cliente(null, "Albert Einstein", "047.166.710-20", "(88) 98755-4412");
+        Cliente c1 = new Cliente(null, "Betina Campos", "870.897.290-79", "(88) 98888-7777");
+        Cliente c2 = new Cliente(null, "Galileu Galilei", "432.559.180-06", "(88) 97854-6985");
+        Cliente c3 = new Cliente(null, "Isaac Newton", "123.294.880-25", "(88) 95555-6541");
+        Cliente c4 = new Cliente(null, "Marie Curie", "469.357.630-10", "(88) 96666-8523");
+        Cliente c5 = new Cliente(null, "Albert Einstein", "455.697.320-12", "(88) 98755-4412");
 
         OrdemServico os1 = new OrdemServico(null, Prioridade.ALTA, "Trocar fonte do notebook", Status.ANDAMENTO, t1, c1);
         OrdemServico os2 = new OrdemServico(null, Prioridade.BAIXA, "Trocar placa mãe", Status.ANDAMENTO, t2, c2);
