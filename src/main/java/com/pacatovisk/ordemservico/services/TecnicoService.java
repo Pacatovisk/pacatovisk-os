@@ -41,4 +41,18 @@ public class TecnicoService {
         }
         return null;
     }
+
+    public Tecnico update(Integer id, TecnicoDto objDto) {
+        Tecnico oldObj = findById(id);
+
+        if(findByCPF(objDto) != null && findByCPF(objDto).getId() != id) {
+            throw new DataIntegrityViolationException("CPF já cadastrado na base de dados!");
+        }
+
+        oldObj.setNome(objDto.getNome());
+        objDto.setCpf(objDto.getCpf());
+        objDto.setTelefone(objDto.getTelefone());
+
+        return tecnicoRepository.save(oldObj);
+    }
 }

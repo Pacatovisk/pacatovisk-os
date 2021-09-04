@@ -42,4 +42,10 @@ public class TecnicoResource {
                 .path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<TecnicoDto> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDto objDto) {
+        TecnicoDto newObj = new TecnicoDto(tecnicoService.update(id, objDto));
+        return ResponseEntity.ok().body(newObj);
+    }
 }
