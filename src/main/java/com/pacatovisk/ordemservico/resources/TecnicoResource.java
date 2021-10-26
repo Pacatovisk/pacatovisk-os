@@ -28,6 +28,22 @@ public class TecnicoResource {
       return ResponseEntity.ok().body(objDto);
     }
 
+    @GetMapping(value = "/cpf/{cpf}")
+    public ResponseEntity<TecnicoDto> findById(@PathVariable String cpf) {
+        TecnicoDto objDto = new TecnicoDto(tecnicoService.findByCpff(cpf));
+        return ResponseEntity.ok().body(objDto);
+    }
+
+    @GetMapping("/filter/custom")
+    public ResponseEntity<TecnicoDto>findTecnicoByCustom(
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "nome", required = false) String nome,
+            @RequestParam(value = "cpf", required = false) String cpf
+    ) {
+        TecnicoDto objDto = new TecnicoDto(tecnicoService.filter(id, nome, cpf));
+        return ResponseEntity.ok().body(objDto);
+    }
+
     @GetMapping
     public ResponseEntity<List<TecnicoDto>> findAll(){
         List<TecnicoDto> listDto = tecnicoService.findAll()

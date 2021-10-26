@@ -2,6 +2,7 @@ package com.pacatovisk.ordemservico.resources.exception;
 
 import com.pacatovisk.ordemservico.services.exceptions.DataIntegrityViolationException;
 import com.pacatovisk.ordemservico.services.exceptions.ObjectNotFoundException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -21,6 +22,12 @@ public class ResourceExeptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException e){
         StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ResponseEntity<StandardError> emptyResultDataAccessException(EmptyResultDataAccessException e){
+        StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),"Não foi possível fazer a busca de dados, por favor, tente novamente!");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 

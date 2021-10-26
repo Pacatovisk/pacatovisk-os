@@ -2,6 +2,7 @@ package com.pacatovisk.ordemservico.services;
 
 import com.pacatovisk.ordemservico.domain.Tecnico;
 import com.pacatovisk.ordemservico.dtos.TecnicoDto;
+import com.pacatovisk.ordemservico.repositories.TecnicoCustomRepository;
 import com.pacatovisk.ordemservico.repositories.TecnicoRepository;
 import com.pacatovisk.ordemservico.services.exceptions.DataIntegrityViolationException;
 import com.pacatovisk.ordemservico.services.exceptions.ObjectNotFoundException;
@@ -17,10 +18,25 @@ public class TecnicoService {
     @Autowired
     private TecnicoRepository tecnicoRepository;
 
+    @Autowired
+    private TecnicoCustomRepository tecnicCustomRepository;
+
     public Tecnico findById(Integer id){
         Optional<Tecnico> obj = tecnicoRepository.findById(id);
       return obj.orElseThrow(() -> new ObjectNotFoundException(
               "Objeto não encontrado! Id: " + id + ", Tipo: " + Tecnico.class.getName()));
+    }
+
+    public Tecnico filter(Integer id, String nome, String cpf){
+        Optional<Tecnico> obj = tecnicCustomRepository.find(id, nome, cpf);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Técnico não encontrado! Id: " + id + ", Nome: " + nome + "Cpf: " + cpf));
+    }
+
+    public Tecnico findByCpff(String cpf){
+        Optional<Tecnico> obj = Optional.ofNullable(tecnicoRepository.findByCPF(cpf));
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Cpf: " + cpf ));
     }
 
     public List<Tecnico> findAll() {
