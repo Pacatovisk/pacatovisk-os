@@ -1,6 +1,7 @@
 package com.pacatovisk.ordemservico.repositories;
 
 import com.pacatovisk.ordemservico.domain.Tecnico;
+import lombok.var;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
