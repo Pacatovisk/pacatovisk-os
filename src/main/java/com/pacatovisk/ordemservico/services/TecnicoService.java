@@ -1,7 +1,9 @@
 package com.pacatovisk.ordemservico.services;
 
+import com.pacatovisk.ordemservico.domain.Pessoa;
 import com.pacatovisk.ordemservico.domain.Tecnico;
 import com.pacatovisk.ordemservico.dtos.TecnicoDto;
+import com.pacatovisk.ordemservico.repositories.PessoaRepository;
 import com.pacatovisk.ordemservico.repositories.TecnicoCustomRepository;
 import com.pacatovisk.ordemservico.repositories.TecnicoRepository;
 import com.pacatovisk.ordemservico.services.exceptions.DataIntegrityViolationException;
@@ -20,6 +22,9 @@ public class TecnicoService {
 
     @Autowired
     private TecnicoCustomRepository tecnicCustomRepository;
+
+    @Autowired
+    private PessoaRepository pessoaRepository;
 
     public Tecnico findById(Integer id){
         Optional<Tecnico> obj = tecnicoRepository.findById(id);
@@ -50,8 +55,8 @@ public class TecnicoService {
         return tecnicoRepository.save(new Tecnico(null, objDto.getNome(), objDto.getCpf(), objDto.getTelefone()));
     }
 
-    public Tecnico findByCPF(TecnicoDto objDto) {
-        Tecnico obj = tecnicoRepository.findByCPF(objDto.getCpf());
+    public Pessoa findByCPF(TecnicoDto objDto) {
+        Pessoa obj = pessoaRepository.findByCPF(objDto.getCpf());
         if(obj != null) {
             return obj;
         }

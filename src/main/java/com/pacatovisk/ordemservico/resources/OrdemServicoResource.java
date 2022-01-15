@@ -2,10 +2,8 @@ package com.pacatovisk.ordemservico.resources;
 
 import com.pacatovisk.ordemservico.domain.OrdemServico;
 import com.pacatovisk.ordemservico.dtos.OrdemServicoDto;
-import com.pacatovisk.ordemservico.dtos.TecnicoDto;
 import com.pacatovisk.ordemservico.services.OSservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/os")
@@ -22,7 +19,6 @@ public class OrdemServicoResource {
 
     @Autowired
     private OSservice oSservice;
-
 
     @GetMapping
     public ResponseEntity<List<OrdemServicoDto>> findAll() throws IllegalAccessException {
